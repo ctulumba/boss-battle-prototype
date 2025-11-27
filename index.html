@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boss Battle: Echo the Literalist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Battle Screen -->
+    <div id="battle-screen" class="screen active">
+        <div class="container">
+            <!-- Header -->
+            <header class="boss-header">
+                <h1>⚔️ BOSS BATTLE</h1>
+                <h2>Echo the Literalist</h2>
+            </header>
+
+            <!-- Challenge Description -->
+            <div class="challenge-box">
+                <p class="challenge-text">
+                    <strong>Challenge:</strong> Get Echo to tell you about <span id="challenge-topic">dinosaurs</span>
+                </p>
+                <p class="boss-description">
+                    Echo only does <em>exactly</em> what you ask. Be specific!
+                </p>
+            </div>
+
+            <!-- Attempt Counter -->
+            <div class="attempts-section">
+                <p class="attempts-label">Attempts:</p>
+                <div class="attempts-dots">
+                    <span class="dot" data-attempt="1"></span>
+                    <span class="dot" data-attempt="2"></span>
+                    <span class="dot" data-attempt="3"></span>
+                    <span class="dot" data-attempt="4"></span>
+                    <span class="dot" data-attempt="5"></span>
+                </div>
+                <p class="attempts-text"><span id="attempts-used">0</span>/5</p>
+            </div>
+
+            <!-- Boss Response Area -->
+            <div class="boss-container">
+                <div class="boss-avatar">
+                    <div class="avatar-circle">📢</div>
+                    <p class="boss-name">Echo</p>
+                </div>
+                <div class="boss-speech-bubble" id="boss-bubble">
+                    <p id="boss-response">I'm ready. Ask me about <span id="topic-in-bubble">dinosaurs</span>!</p>
+                </div>
+            </div>
+
+            <!-- Feedback Section -->
+            <div class="feedback-section">
+                <div id="feedback" class="feedback hidden"></div>
+            </div>
+
+            <!-- Hint Box (appears after 2 failures) -->
+            <div id="hint-box" class="hint-box hidden">
+                <div class="hint-icon">💡</div>
+                <div class="hint-text">
+                    <strong>Hint:</strong> Try asking for specific details, like facts, descriptions, or examples!
+                </div>
+            </div>
+
+            <!-- Prompt Input Area -->
+            <div class="prompt-section">
+                <label for="prompt-input" class="prompt-label">Your prompt:</label>
+                <textarea 
+                    id="prompt-input" 
+                    class="prompt-input" 
+                    placeholder="Type your prompt here... (e.g., 'Tell me 5 facts about dinosaurs')"
+                    rows="3"
+                    maxlength="500"
+                ></textarea>
+                <div class="char-counter">
+                    <span id="char-count">0</span>/500 characters
+                </div>
+                <button id="submit-btn" class="submit-btn">Submit Prompt</button>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Echo is thinking...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victory-screen" class="screen">
+        <div class="container result-container">
+            <div class="result-header victory">
+                <h1>🎉 VICTORY! 🎉</h1>
+            </div>
+
+            <div class="result-content">
+                <div class="boss-defeated">
+                    <p class="defeated-text">You defeated Echo the Literalist!</p>
+                </div>
+
+                <div class="learning-box">
+                    <h3>What you learned:</h3>
+                    <p class="learning-text">"AI needs specific instructions to give helpful answers"</p>
+                </div>
+
+                <div class="stats-box">
+                    <div class="stat">
+                        <span class="stat-label">Attempts used:</span>
+                        <span class="stat-value" id="victory-attempts">0/5</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">XP earned:</span>
+                        <span class="stat-value xp">+50 XP</span>
+                    </div>
+                </div>
+
+                <div class="badge-box">
+                    <div class="badge">
+                        <div class="badge-icon">🏅</div>
+                        <p class="badge-name">Badge Unlocked!</p>
+                        <p class="badge-title">"Specific Commander"</p>
+                    </div>
+                </div>
+
+                <div class="winning-prompt-box">
+                    <h3>Your winning prompt:</h3>
+                    <p class="winning-prompt" id="winning-prompt"></p>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="try-again-victory" class="btn btn-secondary">Try Boss 1 Again</button>
+                    <button class="btn btn-primary btn-disabled" disabled>Next Boss →</button>
+                    <p class="coming-soon">(Boss 2 coming soon!)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Defeat Screen -->
+    <div id="defeat-screen" class="screen">
+        <div class="container result-container">
+            <div class="result-header defeat">
+                <h1>Not quite yet...</h1>
+            </div>
+
+            <div class="result-content">
+                <div class="defeat-message">
+                    <p>Echo is tricky! You used all 5 attempts, but don't give up!</p>
+                </div>
+
+                <div class="tips-box">
+                    <h3>💡 Remember:</h3>
+                    <p>Echo needs specific details. Try asking for:</p>
+                    <ul>
+                        <li>A certain number of facts (e.g., "5 facts")</li>
+                        <li>Descriptions of specific things (e.g., "what it looked like")</li>
+                        <li>Multiple pieces of information (e.g., "appearance and diet")</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <h3>Example that works:</h3>
+                    <p class="example-prompt">"Tell me 5 interesting facts about dinosaurs"</p>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="try-again-defeat" class="btn btn-primary">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
