@@ -18,12 +18,36 @@
 
             <!-- Challenge Description -->
             <div class="challenge-box">
-                <p class="challenge-text">
-                    <strong>Challenge:</strong> Get Echo to tell you about <span id="challenge-topic">dinosaurs</span>
+                <div class="quest-header">
+                    <span class="quest-icon">📚</span>
+                    <h3>The Ancient Library Challenge</h3>
+                </div>
+                <p class="quest-story">
+                    Echo guards the knowledge of <span id="challenge-topic" class="topic-highlight">dinosaurs</span>. 
+                    This ancient guardian will only share secrets with those who ask properly!
                 </p>
                 <p class="boss-description">
-                    Echo only does <em>exactly</em> what you ask. Be specific!
+                    💡 Echo only responds to <em>specific</em> questions. Can you unlock the knowledge?
                 </p>
+            </div>
+
+            <!-- Visual Prompt Builder -->
+            <div class="prompt-builder">
+                <p class="builder-title">Your prompt needs:</p>
+                <div class="checklist">
+                    <div class="checklist-item" id="check-topic">
+                        <span class="checkbox">☐</span>
+                        <span class="check-label">Topic mentioned</span>
+                    </div>
+                    <div class="checklist-item" id="check-number">
+                        <span class="checkbox">☐</span>
+                        <span class="check-label">Number specified (e.g., "5 facts")</span>
+                    </div>
+                    <div class="checklist-item" id="check-details">
+                        <span class="checkbox">☐</span>
+                        <span class="check-label">Details requested (describe, explain, list)</span>
+                    </div>
+                </div>
             </div>
 
             <!-- Attempt Counter -->
@@ -46,7 +70,7 @@
                     <p class="boss-name">Echo</p>
                 </div>
                 <div class="boss-speech-bubble" id="boss-bubble">
-                    <p id="boss-response">I'm ready. Ask me about <span id="topic-in-bubble">dinosaurs</span>!</p>
+                    <p id="boss-response">I am Echo, guardian of knowledge. Ask me about <span id="topic-in-bubble">dinosaurs</span>... if you dare. But I only answer to those who ask with precision!</p>
                 </div>
             </div>
 
@@ -90,6 +114,9 @@
     <!-- Victory Screen -->
     <div id="victory-screen" class="screen">
         <div class="container result-container">
+            <!-- Confetti Container -->
+            <div id="confetti-container"></div>
+            
             <div class="result-header victory">
                 <h1>🎉 VICTORY! 🎉</h1>
             </div>
@@ -97,11 +124,28 @@
             <div class="result-content">
                 <div class="boss-defeated">
                     <p class="defeated-text">You defeated Echo the Literalist!</p>
+                    <p class="echo-celebration">"Finally! A clear question! Well done, young scholar!"</p>
                 </div>
 
                 <div class="learning-box">
                     <h3>What you learned:</h3>
                     <p class="learning-text">"AI needs specific instructions to give helpful answers"</p>
+                </div>
+
+                <!-- Prompt Comparison -->
+                <div class="prompt-comparison">
+                    <h3>Your Journey:</h3>
+                    <div class="comparison-grid">
+                        <div class="comparison-item first-attempt">
+                            <p class="comparison-label">❌ First attempt:</p>
+                            <p class="comparison-prompt" id="first-prompt"></p>
+                        </div>
+                        <div class="comparison-arrow">→</div>
+                        <div class="comparison-item winning-attempt">
+                            <p class="comparison-label">✅ Winning prompt:</p>
+                            <p class="comparison-prompt" id="final-prompt"></p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="stats-box">
@@ -123,13 +167,8 @@
                     </div>
                 </div>
 
-                <div class="winning-prompt-box">
-                    <h3>Your winning prompt:</h3>
-                    <p class="winning-prompt" id="winning-prompt"></p>
-                </div>
-
                 <div class="action-buttons">
-                    <button id="try-again-victory" class="btn btn-secondary">Try Boss 1 Again</button>
+                    <button id="try-again-victory" class="btn btn-secondary">Try New Topic</button>
                     <button class="btn btn-primary btn-disabled" disabled>Next Boss →</button>
                     <p class="coming-soon">(Boss 2 coming soon!)</p>
                 </div>
